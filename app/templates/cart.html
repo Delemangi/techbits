@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <h3 class="text-center my-5">
+        <span
+            class="text-decoration-underline rounded-pill py-1 px-2 d-inline-block mx-auto"
+        >
+            Your Shopping Cart
+        </span>
+    </h3>
+    <ul class="list-group">
+        {% if cart|length == 0 %}
+        <h5 class="alert alert-danger text-center mw-25">
+            Your cart is empty.
+        </h5>
+        {% else %}
+        <li class="list-group-item" key="{p.id}">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-5 my-auto fs-4">Name</div>
+                <div class="col-1 my-auto fs-4">Quantity</div>
+                <div class="col-4 g-col-3 d-flex flex-column align-items-end">
+                    <div class="col-1 my-auto fs-4 me-5">Price</div>
+                </div>
+            </div>
+        </li>
+        {% for product in cart %}
+        <li class="list-group-item" key="{p.id}">
+            <div class="row">
+                <div class="col-2">
+                    <img
+                        src="{{ product.product.image.url }}"
+                        alt="{{ product.product.name }}"
+                        class="img-fluid img-thumbnail"
+                        style="max-height: 10vh"
+                    />
+                </div>
+                <div class="col-5 my-auto fs-4">{{ product.product.name }}</div>
+                <div class="col-1 my-auto">
+                    <div class="badge text-bg-secondary">
+                        <span class="fs-4">{{ product.quantity }}</span>
+                    </div>
+                </div>
+                <div class="col-4 g-col-3 d-flex flex-column align-items-end">
+                    <div class="col-1 my-auto fs-4 me-5">
+                        ${{ product.product.price }}
+                    </div>
+                    <div class="col-1 my-auto fs-4 me-5">
+                        <button
+                            id="{{ product.product.slug }}"
+                            type="button"
+                            class="btn btn-danger remove-from-cart"
+                        >
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %} {% endif %}
+    </ul>
+    <div class="row mt-3">
+        <div class="d-flex justify-content-center gap-5">
+            <a href="/" type="button" class="btn btn-secondary">
+                Continue Shopping
+            </a>
+            {% if cart|length == 0 %}
+            <a href="/checkout" class="btn btn-success disabled"> Checkout </a>
+            {% else %}
+            <a href="/checkout" class="btn btn-success"> Checkout </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

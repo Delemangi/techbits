@@ -1,0 +1,27 @@
+<span class="navbar-text">
+    {% if user.is_authenticated %}
+    <span>Welcome, </span>
+    <img
+        src="{{ info.avatar.url }}"
+        alt="Avatar"
+        class="rounded-circle"
+        style="width: 1.8rem; height: 1.8rem"
+    />
+    <a href="/profile" class="me-3">{{ info.nickname }}</a>
+    <a href="/cart" class="text-decoration-none">
+        <button type="button" class="btn btn-secondary">Shopping Cart</button>
+    </a>
+    <a href="/admin/app/product/add/" class="text-decoration-none">
+        <button type="button" class="btn btn-secondary ms-2">
+            Add Product
+        </button>
+    </a>
+    <button type="button" class="btn btn-secondary ms-2">
+        <a href="/logout/?next=/">Logout</a>
+    </button>
+    {% else %}
+    <button type="button" class="btn btn-secondary">
+        <a href="/login/?next=/">Login</a>
+    </button>
+    {% endif %}
+</span>

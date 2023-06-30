@@ -1,0 +1,65 @@
+[tool.poetry]
+name = "techbits"
+version = "0.1.0"
+description = "TechBits prototype"
+authors = ["Delemangi <milev.stefan@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2.2"
+pillow = "^9.5.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.0"
+ruff = "^0.0.275"
+black = "^23.3.0"
+django-stubs = "^4.2.1"
+django-stubs-ext = "^4.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+strict = true
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "techbits.settings"
+
+[tool.ruff]
+select = [
+    # pyflakes
+    "F",
+    # pycodestyle
+    "E",
+    "W",
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # pep8-naming
+    "N",
+    # flake8-bugbear
+    "B",
+    # flake8-quotes
+    "Q",
+    # flake-8-pie
+    "PIE",
+    # flake-8-return
+    "RET",
+    # flake8-use-pathlib
+    "PTH",
+    # pylint
+    "PLE",
+    "PLR",
+    "PLW",
+    # pyupgrade
+    "UP",
+    # ruff
+    "RUF",
+    # django
+    "DJ",
+]
+ignore = ["RUF012"]
+target-version = "py310"
