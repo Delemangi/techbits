@@ -8,13 +8,13 @@ authors = ["Delemangi <milev.stefan@gmail.com>"]
 python = "^3.10"
 django = "^4.2.2"
 pillow = "^9.5.0"
+django-stubs-ext = "^4.2.2"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.0"
 ruff = "^0.0.275"
 black = "^23.3.0"
 django-stubs = "^4.2.1"
-django-stubs-ext = "^4.2.1"
 
 [build-system]
 requires = ["poetry-core"]
