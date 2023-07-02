@@ -39,8 +39,11 @@
                 data-bs-title="Added to cart!"
                 data-bs-target="#added-to-cart"
                 type="button"
+                {% if not user.is_authenticated %} disabled {% endif %}
             >
+                {% if not user.is_authenticated %} Login to Add to Cart {% else %}
                 Add to Cart
+                {% endif %}
             </button>
         </div>
     </div>
